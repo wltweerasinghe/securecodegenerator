@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you reference or cite the documentation and architectural specifications of this project, please cite it using the metadata below."
+title: "LTW Secure Code Generator — Documentation & Governance Specification"
+abstract: "Official public documentation, security policy, and legal framework for the LTW Secure Code Generator project."
+authors:
+  - family-names: "Weerasinghe"
+    given-names: "W Lithira Thulnith Weeerasinghe"
+    alias: "LTW"
+version: "1.0.0"
+date-released: "2026-10-08"
+license: "Proprietary"
+repository-code: "https://github.com/wltweerasinghe/securecodegenerator.git"
+keywords:
+  - cryptography
+  - documentation
+  - security-policy
+  - web-crypto-api
+  - proprietary

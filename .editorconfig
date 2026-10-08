@@ -1,0 +1,21 @@
+# EditorConfig settings to enforce uniform coding and markdown style standards
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = off
+
+[*.{yml,yaml,json,cff}]
+indent_style = space
+indent_size = 2
+
+[LICENSE]
+insert_final_newline = true
