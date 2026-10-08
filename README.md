@@ -65,4 +65,4 @@ For inquiries regarding commercial licensing, enterprise deployment permissions,
 
 **Copyright (c) 2026 W Lithira Thulnith Weerasinghe / LTW. All Rights Reserved.**
 
-W Lithira Thulnith Weerasinghe™ and LTW™ are registered trademarks of W Lithira Thulnith Weerasinghe.
+W Lithira Thulnith Weerasinghe™ and LTW™ are trademarks of W Lithira Thulnith Weerasinghe.
