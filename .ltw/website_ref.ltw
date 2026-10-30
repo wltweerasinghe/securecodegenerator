@@ -1,0 +1,7 @@
+# LTW Website Metadata Configuration
+title: Secure Code Generator
+category: Web Application
+description: LTW Secure Code Generator is a zero-trust client-side utility engineered to produce cryptographically secure random authentication tokens, high-entropy passwords, and cryptographic keys.
+live_url: 
+github_url: https://github.com/wltweerasinghe/securecodegenerator.git
+sort_order: 1
