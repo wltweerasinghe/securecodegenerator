@@ -1,187 +1,520 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LTW Secure Code Generator — Official Documentation</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
+        :root {
+            --bg-main: #020617;
+            --bg-card: rgba(15, 23, 42, 0.6);
+            --bg-card-solid: #0f172a;
+            --border-color: #1e293b;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --text-heading: #f8fafc;
+            --accent-cyan: #22d3ee;
+            --accent-emerald: #34d399;
+            --accent-amber: #fbbf24;
+            --accent-rose: #f43f5e;
+            --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            --font-mono: 'Fira Code', Consolas, Monaco, 'Courier New', monospace;
         }
-        pre, code {
-            font-family: 'Fira Code', monospace;
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        pre,
+        code {
+            font-family: var(--font-mono);
+        }
+
+        /* Navigation Bar */
+        .header-bar {
+            border-bottom: 1px solid var(--border-color);
+            background-color: rgba(15, 23, 42, 0.8);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(8px);
+        }
+
+        .header-container {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .brand-badge {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 0.5rem;
+            background-color: rgba(34, 211, 238, 0.1);
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+        }
+
+        .brand-title {
+            font-weight: 600;
+            color: #f1f5f9;
+            font-size: 1.125rem;
+            letter-spacing: -0.025em;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            border-radius: 9999px;
+            background-color: rgba(52, 211, 153, 0.1);
+            padding: 0.25rem 0.625rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--accent-emerald);
+            border: 1px solid rgba(52, 211, 153, 0.2);
+        }
+
+        .status-dot {
+            height: 0.375rem;
+            width: 0.375rem;
+            border-radius: 9999px;
+            background-color: var(--accent-emerald);
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 896px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        /* Hero Header */
+        .hero-section {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 2rem;
+        }
+
+        .hero-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            letter-spacing: -0.025em;
+            margin-bottom: 1rem;
+            line-height: 1.25;
+        }
+
+        .hero-description {
+            color: var(--text-muted);
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+        }
+
+        /* Callout Box */
+        .callout-box {
+            border-radius: 0.75rem;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            background-color: rgba(251, 191, 36, 0.1);
+            padding: 1.25rem;
+            color: rgba(254, 243, 199, 0.9);
+        }
+
+        .callout-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .callout-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: var(--accent-amber);
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+
+        .callout-header {
+            font-weight: 600;
+            color: #fde68a;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.75rem;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .callout-text {
+            font-size: 0.875rem;
+            line-height: 1.5;
+            color: rgba(253, 230, 138, 0.8);
+        }
+
+        /* Sections */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #f1f5f9;
+            letter-spacing: -0.025em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cyan-hash {
+            color: var(--accent-cyan);
+        }
+
+        .section-text {
+            color: #cbd5e1;
+            line-height: 1.625;
+            font-size: 1rem;
+        }
+
+        /* Highlights Grid */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .card {
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-card);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .card-header {
+            font-weight: 600;
+            color: var(--accent-cyan);
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .card-body {
+            color: #cbd5e1;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        .inline-code {
+            background-color: #1e293b;
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            color: #67e8f9;
+            font-size: 0.75rem;
+        }
+
+        /* Architecture Pre Block */
+        .tree-block {
+            border-radius: 0.75rem;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-card-solid);
+            padding: 1rem;
+            overflow-x: auto;
+        }
+
+        .tree-content {
+            font-size: 0.875rem;
+            color: #cbd5e1;
+            line-height: 1.625;
+            white-space: pre;
+        }
+
+        .tree-comment {
+            color: #64748b;
+        }
+
+        /* Tag Badges */
+        .badge {
+            padding: 0.125rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+
+        .badge-permitted {
+            background-color: rgba(52, 211, 153, 0.1);
+            color: var(--accent-emerald);
+            border: 1px solid rgba(52, 211, 153, 0.2);
+        }
+
+        .badge-prohibited {
+            background-color: rgba(244, 63, 94, 0.1);
+            color: var(--accent-rose);
+            border: 1px solid rgba(244, 63, 94, 0.2);
+        }
+
+        .rights-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: #cbd5e1;
+            margin-bottom: 0.75rem;
+        }
+
+        .link-cyan {
+            color: var(--accent-cyan);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .link-cyan:hover {
+            color: #67e8f9;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid var(--border-color);
+            margin: 0;
+        }
+
+        /* Footer */
+        .footer-section {
+            padding-top: 1rem;
+            padding-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .copyright-text {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .trademark-text {
+            color: #64748b;
+            font-size: 0.75rem;
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-200 antialiased selection:bg-cyan-500 selection:text-slate-950 min-h-screen">
-    
+
+<body>
+
     <!-- Top Navigation Bar -->
-    <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold font-mono">
-                    LTW
-                </div>
-                <span class="font-semibold text-slate-100 text-lg tracking-tight">LTW Secure Code Generator</span>
+    <header class="header-bar">
+        <div class="header-container">
+            <div class="brand-wrapper">
+                <div class="brand-badge">LTW</div>
+                <span class="brand-title">LTW Secure Code Generator</span>
             </div>
-            <span class="inline-flex items-center gap-x-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-medium text-emerald-400 border border-emerald-500/20">
-                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+            <span class="status-pill">
+                <span class="status-dot"></span>
                 Official Documentation
             </span>
         </div>
     </header>
 
     <!-- Main Content Container -->
-    <main class="max-w-4xl mx-auto px-6 py-12 space-y-12">
-        
+    <main class="main-container">
+
         <!-- Hero / Title Section -->
-        <div class="border-b border-slate-800 pb-8">
-            <h1 class="text-3xl sm:text-4xl font-bold text-slate-50 tracking-tight mb-4">
+        <div class="hero-section">
+            <h1 class="hero-title">
                 LTW Secure Code Generator — Official Documentation & Repository Governance
             </h1>
-            <p class="text-slate-400 text-lg leading-relaxed">
-                Welcome to the public documentation and repository governance directory for <strong class="text-slate-200">LTW Secure Code Generator</strong>.
+            <p class="hero-description">
+                Welcome to the public documentation and repository governance directory for <strong
+                    style="color: #e2e8f0;">LTW Secure Code Generator</strong>.
             </p>
         </div>
 
         <!-- Callout Banner -->
-        <div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-5 text-amber-200/90 shadow-lg">
-            <div class="flex items-start gap-3">
-                <svg class="w-6 h-6 text-amber-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+        <div class="callout-box">
+            <div class="callout-content">
+                <svg class="callout-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
                 <div>
-                    <strong class="font-semibold text-amber-300 uppercase tracking-wide text-xs block mb-1">Important Notice Regarding Source Code</strong>
-                    <p class="text-sm leading-relaxed text-amber-200/80">
-                        This public repository contains <strong>strictly documentation, legal frameworks, and configuration metadata</strong>. The underlying application source code, execution binaries, and proprietary implementation scripts are <strong>NOT</strong> published, hosted, or accessible within this public project.
+                    <strong class="callout-header">Important Notice Regarding Source Code</strong>
+                    <p class="callout-text">
+                        This public repository contains <strong>strictly documentation, legal frameworks, and
+                            configuration metadata</strong>. The underlying application source code, execution binaries,
+                        and proprietary implementation scripts are <strong>NOT</strong> published, hosted, or accessible
+                        within this public project.
                     </p>
                 </div>
             </div>
         </div>
 
         <!-- Section: Executive Summary -->
-        <section class="space-y-4">
-            <h2 class="text-2xl font-semibold text-slate-100 tracking-tight flex items-center gap-2">
-                <span class="text-cyan-400">#</span> Executive Summary
+        <section>
+            <h2 class="section-title">
+                <span class="cyan-hash">#</span> Executive Summary
             </h2>
-            <p class="text-slate-300 leading-relaxed text-base">
-                <strong class="text-slate-100">LTW Secure Code Generator</strong> is a zero-trust client-side utility engineered to produce cryptographically secure random authentication tokens, high-entropy passwords, and cryptographic keys. Designed with absolute privacy in mind, the application executes entirely within the client's local browser runtime using native Web Cryptography APIs, ensuring zero external network dependencies, zero remote telemetry, and zero server-side storage.
+            <p class="section-text">
+                <strong style="color: #f8fafc;">LTW Secure Code Generator</strong> is a zero-trust client-side utility
+                engineered to produce cryptographically secure random authentication tokens, high-entropy passwords, and
+                cryptographic keys. Designed with absolute privacy in mind, the application executes entirely within the
+                client's local browser runtime using native Web Cryptography APIs, ensuring zero external network
+                dependencies, zero remote telemetry, and zero server-side storage.
             </p>
         </section>
 
-        <hr class="border-slate-800" />
+        <hr />
 
         <!-- Section: Architectural & Security Highlights -->
-        <section class="space-y-6">
-            <h2 class="text-2xl font-semibold text-slate-100 tracking-tight flex items-center gap-2">
-                <span class="text-cyan-400">#</span> Architectural & Security Highlights
+        <section>
+            <h2 class="section-title">
+                <span class="cyan-hash">#</span> Architectural & Security Highlights
             </h2>
-            <div class="grid gap-4 sm:grid-cols-2">
-                <div class="p-5 rounded-xl border border-slate-800 bg-slate-900/60 space-y-2">
-                    <h3 class="font-semibold text-cyan-400 text-sm tracking-wide uppercase">Pure Client-Side Cryptography</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        Utilizes standard browser Web Crypto APIs (<code class="bg-slate-800 px-1.5 py-0.5 rounded text-cyan-300 text-xs">crypto.getRandomValues</code>) to ensure entropy generation is non-deterministic and local to the user's system.
+            <div class="grid-2col">
+                <div class="card">
+                    <h3 class="card-header">Pure Client-Side Cryptography</h3>
+                    <p class="card-body">
+                        Utilizes standard browser Web Crypto APIs (<code
+                            class="inline-code">crypto.getRandomValues</code>) to ensure entropy generation is
+                        non-deterministic and local to the user's system.
                     </p>
                 </div>
-                <div class="p-5 rounded-xl border border-slate-800 bg-slate-900/60 space-y-2">
-                    <h3 class="font-semibold text-cyan-400 text-sm tracking-wide uppercase">Zero External Dependencies</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        Built without reliance on third-party remote scripts, external CDNs, or secondary endpoints, eliminating supply-chain attack vectors.
+                <div class="card">
+                    <h3 class="card-header">Zero External Dependencies</h3>
+                    <p class="card-body">
+                        Built without reliance on third-party remote scripts, external CDNs, or secondary endpoints,
+                        eliminating supply-chain attack vectors.
                     </p>
                 </div>
-                <div class="p-5 rounded-xl border border-slate-800 bg-slate-900/60 space-y-2">
-                    <h3 class="font-semibold text-cyan-400 text-sm tracking-wide uppercase">Isolated Local Persistence</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        Retains user settings and generated output solely within browser <code class="bg-slate-800 px-1.5 py-0.5 rounded text-cyan-300 text-xs">localStorage</code>, featuring an immediate client-side data purge mechanism for total isolation.
+                <div class="card">
+                    <h3 class="card-header">Isolated Local Persistence</h3>
+                    <p class="card-body">
+                        Retains user settings and generated output solely within browser <code
+                            class="inline-code">localStorage</code>, featuring an immediate client-side data purge
+                        mechanism for total isolation.
                     </p>
                 </div>
-                <div class="p-5 rounded-xl border border-slate-800 bg-slate-900/60 space-y-2">
-                    <h3 class="font-semibold text-cyan-400 text-sm tracking-wide uppercase">Strict Source-Available Licensing</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        Protected by custom legal conditions that strictly limit repository permissions to read-only inspection and educational evaluation.
+                <div class="card">
+                    <h3 class="card-header">Strict Source-Available Licensing</h3>
+                    <p class="card-body">
+                        Protected by custom legal conditions that strictly limit repository permissions to read-only
+                        inspection and educational evaluation.
                     </p>
                 </div>
             </div>
         </section>
 
-        <hr class="border-slate-800" />
+        <hr />
 
         <!-- Section: Public Repository Architecture -->
-        <section class="space-y-4">
-            <h2 class="text-2xl font-semibold text-slate-100 tracking-tight flex items-center gap-2">
-                <span class="text-cyan-400">#</span> Public Repository Architecture
+        <section>
+            <h2 class="section-title">
+                <span class="cyan-hash">#</span> Public Repository Architecture
             </h2>
-            <p class="text-slate-400 text-sm">
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1rem;">
                 This public repository contains only governance and metadata assets structured as follows:
             </p>
-            <div class="rounded-xl border border-slate-800 bg-slate-900 p-4 overflow-x-auto shadow-inner">
-                <pre class="text-sm text-slate-300 leading-relaxed font-mono">.
+            <div class="tree-block">
+                <pre class="tree-content">.
 ├── .github/
 │   ├── ISSUE_TEMPLATE/
-│   │   └── bug_report.md          <span class="text-slate-500"># Structured template for reporting documentation issues</span>
-│   └── PULL_REQUEST_TEMPLATE.md   <span class="text-slate-500"># Guidelines for documentation contribution review</span>
-├── .editorconfig                  <span class="text-slate-500"># Code style and formatting standards across editors</span>
-├── .gitignore                     <span class="text-slate-500"># Repository file exclusion parameters</span>
-├── CHANGELOG.md                   <span class="text-slate-500"># Comprehensive release notes and documentation history</span>
-├── CITATION.cff                    <span class="text-slate-500"># Machine-readable academic and professional citation format</span>
-├── CODE_OF_CONDUCT.md             <span class="text-slate-500"># Public engagement and community interaction guidelines</span>
-├── CONTRIBUTING.md                <span class="text-slate-500"># Policies regarding contributions and repository limits</span>
-├── LICENSE                        <span class="text-slate-500"># Strict Source-Available & Proprietary License</span>
-├── README.md                      <span class="text-slate-500"># Primary project overview and governance document</span>
-├── SECURITY.md                    <span class="text-slate-500"># Vulnerability reporting protocols and security posture</span>
-├── SUPPORT.md                     <span class="text-slate-500"># Official support channels and inquiry procedures</span>
-└── VERSION                        <span class="text-slate-500"># Current major version tag</span></pre>
+│   │   └── bug_report.md          <span class="tree-comment"># Structured template for reporting documentation issues</span>
+│   └── PULL_REQUEST_TEMPLATE.md   <span class="tree-comment"># Guidelines for documentation contribution review</span>
+├── .editorconfig                  <span class="tree-comment"># Code style and formatting standards across editors</span>
+├── .gitignore                     <span class="tree-comment"># Repository file exclusion parameters</span>
+├── CHANGELOG.md                   <span class="tree-comment"># Comprehensive release notes and documentation history</span>
+├── CITATION.cff                    <span class="tree-comment"># Machine-readable academic and professional citation format</span>
+├── CODE_OF_CONDUCT.md             <span class="tree-comment"># Public engagement and community interaction guidelines</span>
+├── CONTRIBUTING.md                <span class="tree-comment"># Policies regarding contributions and repository limits</span>
+├── LICENSE                        <span class="tree-comment"># Strict Source-Available & Proprietary License</span>
+├── README.md                      <span class="tree-comment"># Primary project overview and governance document</span>
+├── SECURITY.md                    <span class="tree-comment"># Vulnerability reporting protocols and security posture</span>
+├── SUPPORT.md                     <span class="tree-comment"># Official support channels and inquiry procedures</span>
+└── VERSION                        <span class="tree-comment"># Current major version tag</span></pre>
             </div>
         </section>
 
-        <hr class="border-slate-800" />
+        <hr />
 
         <!-- Section: Rights & Licensing Summary -->
-        <section class="space-y-6">
-            <h2 class="text-2xl font-semibold text-slate-100 tracking-tight flex items-center gap-2">
-                <span class="text-cyan-400">#</span> Rights & Licensing Summary
+        <section>
+            <h2 class="section-title">
+                <span class="cyan-hash">#</span> Rights & Licensing Summary
             </h2>
-            <p class="text-slate-300 leading-relaxed">
-                All files published within this repository are governed by the Strict Source-Available & Proprietary License.
+            <p class="section-text" style="margin-bottom: 1.5rem;">
+                All files published within this repository are governed by the Strict Source-Available & Proprietary
+                License.
             </p>
-            
-            <div class="space-y-3">
-                <div class="flex items-start gap-3 text-slate-300">
-                    <span class="px-2 py-0.5 rounded text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase shrink-0 mt-0.5">Permitted</span>
-                    <span>Viewing and inspecting documentation in a browser for educational, technical review, or portfolio assessment purposes.</span>
+
+            <div style="margin-bottom: 1.5rem;">
+                <div class="rights-item">
+                    <span class="badge badge-permitted">Permitted</span>
+                    <span>Viewing and inspecting documentation in a browser for educational, technical review, or
+                        portfolio assessment purposes.</span>
                 </div>
-                <div class="flex items-start gap-3 text-slate-300">
-                    <span class="px-2 py-0.5 rounded text-xs font-semibold bg-rose-500/10 text-rose-400 border border-rose-500/20 uppercase shrink-0 mt-0.5">Prohibited</span>
-                    <span>Any copying, redistribution, public mirroring, commercial monetization, reverse engineering, or utilization for artificial intelligence / machine learning training.</span>
+                <div class="rights-item">
+                    <span class="badge badge-prohibited">Prohibited</span>
+                    <span>Any copying, redistribution, public mirroring, commercial monetization, reverse engineering,
+                        or utilization for artificial intelligence / machine learning training.</span>
                 </div>
             </div>
 
-            <p class="text-slate-400 text-sm">
-                For comprehensive details, please refer to the complete <a href="LICENSE.md" class="text-cyan-400 underline underline-offset-4 hover:text-cyan-300 transition-colors">LICENSE</a> file.
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.5rem;">
+                For comprehensive details, please refer to the complete <a href="LICENSE.md"
+                    class="link-cyan">LICENSE</a> file.
             </p>
 
-            <div class="rounded-xl border border-slate-800 bg-slate-900/40 p-5 mt-6">
-                <h3 class="font-semibold text-slate-100 text-base mb-2">Contact & Enterprise Enquiries</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">
-                    For inquiries regarding commercial licensing, enterprise deployment permissions, or direct code audits, please reach out directly to 
-                    <a href="mailto:wltweerasinghe@gmail.com" class="text-cyan-400 underline underline-offset-4 hover:text-cyan-300 transition-colors">W L T Weerasinghe</a>.
+            <div class="card" style="background-color: rgba(15, 23, 42, 0.4); padding: 1.25rem;">
+                <h3 style="font-weight: 600; color: #f1f5f9; font-size: 1rem; margin-bottom: 0.5rem;">Contact &
+                    Enterprise Enquiries</h3>
+                <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.5;">
+                    For inquiries regarding commercial licensing, enterprise deployment permissions, or direct code
+                    audits, please reach out directly to
+                    <a href="mailto:wltweerasinghe@gmail.com" class="link-cyan">W L T Weerasinghe</a>.
                 </p>
             </div>
         </section>
 
-        <hr class="border-slate-800" />
+        <hr />
 
         <!-- Section: Copyright Notice -->
-        <footer class="pt-4 pb-8 text-center sm:text-left space-y-2">
-            <h2 class="text-xl font-semibold text-slate-100 tracking-tight">Copyright Notice</h2>
-            <p class="text-slate-400 text-sm">
+        <footer class="footer-section">
+            <h2 style="font-size: 1.25rem; font-weight: 600; color: #f1f5f9; letter-spacing: -0.025em;">Copyright Notice
+            </h2>
+            <p class="copyright-text">
                 <strong>Copyright (c) 2026 W Lithira Thulnith Weerasinghe / LTW. All Rights Reserved.</strong>
             </p>
-            <p class="text-slate-500 text-xs">
+            <p class="trademark-text">
                 W Lithira Thulnith Weerasinghe™ and LTW™ are trademarks of W Lithira Thulnith Weerasinghe.
             </p>
         </footer>
@@ -189,4 +522,5 @@
     </main>
 
 </body>
+
 </html>
