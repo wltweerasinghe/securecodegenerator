@@ -57,7 +57,7 @@ All files published within this repository are governed by the Strict Source-Ava
 For comprehensive details, please refer to the complete [LICENSE](LICENSE.md) file.
 
 **Contact & Enterprise Enquiries**
-For inquiries regarding commercial licensing, enterprise deployment permissions, or direct code audits, please reach out directly to [W L T Weerasinghe](mailto:wltweerasinghe@gmail.com).
+For inquiries regarding commercial licensing, enterprise deployment permissions, or direct code audits, please reach out directly to [W L T Weerasinghe](mailto:legal@wltweerasinghe.com).
 
 ---
 

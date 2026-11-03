@@ -352,11 +352,13 @@
         <!-- Hero / Title Section -->
         <div class="hero-section">
             <h1 class="hero-title">
-                LTW Secure Code Generator — Official Documentation & Repository Governance
+                LTW Secure Code Generator — Documentation & Governance
             </h1>
             <p class="hero-description">
-                Welcome to the public documentation and repository governance directory for <strong
-                    style="color: #e2e8f0;">LTW Secure Code Generator</strong>.
+                Welcome to the documentation hub for <strong style="color: #e2e8f0;">LTW Secure Code Generator</strong>.
+                As someone in cybersecurity who overthinks potential attack vectors, I built this tool to establish an
+                unyielding security barrier against attackers by generating rock-solid authentication keys, high-entropy
+                passwords, and cryptographic tokens directly where they belong: locally in your browser.
             </p>
         </div>
 
@@ -379,41 +381,47 @@
             </div>
         </div>
 
-        <!-- Section: Executive Summary -->
+        <!-- Section: Why I Built This -->
         <section>
             <h2 class="section-title">
-                <span class="cyan-hash">#</span> Executive Summary
+                <span class="cyan-hash">#</span> Why I Built This
             </h2>
-            <p class="section-text">
-                <strong style="color: #f8fafc;">LTW Secure Code Generator</strong> is a zero-trust client-side utility
-                engineered to produce cryptographically secure random authentication tokens, high-entropy passwords, and
-                cryptographic keys. Designed with absolute privacy in mind, the application executes entirely within the
-                client's local browser runtime using native Web Cryptography APIs, ensuring zero external network
-                dependencies, zero remote telemetry, and zero server-side storage.
+            <p class="section-text" style="margin-bottom: 1rem;">
+                When handling authentication and key management, trusting third-party servers or external APIs always
+                feels like an unnecessary compromise. My approach is simple: eliminate the middleman entirely so
+                attackers have no remote endpoints or intercept points to target.
             </p>
+            <ul style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.7; padding-left: 1.25rem;">
+                <li><strong style="color: #f8fafc;">Zero Remote Trust:</strong> Key generation shouldn't rely on server
+                    round-trips where tokens can be logged or intercepted.</li>
+                <li><strong style="color: #f8fafc;">Proactive Defense:</strong> Running everything locally creates an
+                    isolated environment, giving potential attackers zero visibility into your keys.</li>
+                <li><strong style="color: #f8fafc;">High Entropy Confidence:</strong> Direct reliance on native Web
+                    Cryptography APIs guarantees non-deterministic randomness.</li>
+            </ul>
         </section>
 
         <hr />
 
-        <!-- Section: Architectural & Security Highlights -->
+        <!-- Section: Core Features & Architecture -->
         <section>
             <h2 class="section-title">
-                <span class="cyan-hash">#</span> Architectural & Security Highlights
+                <span class="cyan-hash">#</span> Core Features & Architecture
             </h2>
             <div class="grid-2col">
                 <div class="card">
                     <h3 class="card-header">Pure Client-Side Cryptography</h3>
                     <p class="card-body">
                         Utilizes standard browser Web Crypto APIs (<code
-                            class="inline-code">crypto.getRandomValues</code>) to ensure entropy generation is
-                        non-deterministic and local to the user's system.
+                            class="inline-code">crypto.getRandomValues</code>) to ensure entropy generation is strictly
+                        non-deterministic and local to your system.
                     </p>
                 </div>
                 <div class="card">
                     <h3 class="card-header">Zero External Dependencies</h3>
                     <p class="card-body">
                         Built without reliance on third-party remote scripts, external CDNs, or secondary endpoints,
-                        eliminating supply-chain attack vectors.
+                        completely shutting down supply-chain attack vectors.
                     </p>
                 </div>
                 <div class="card">
@@ -500,7 +508,7 @@
                 <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.5;">
                     For inquiries regarding commercial licensing, enterprise deployment permissions, or direct code
                     audits, please reach out directly to
-                    <a href="mailto:wltweerasinghe@gmail.com" class="link-cyan">W L T Weerasinghe</a>.
+                    <a href="mailto:legal@wltweerasinghe.com" class="link-cyan">W L T Weerasinghe</a>.
                 </p>
             </div>
         </section>

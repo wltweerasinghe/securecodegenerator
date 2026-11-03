@@ -1,0 +1,7 @@
+# Force version tracking to count as JavaScript code
+VERSION.md linguist-language=JavaScript
+VERSION.md -linguist-documentation
+
+# Force support documentation to count as CSS code
+SUPPORT.md linguist-language=CSS
+SUPPORT.md -linguist-documentation

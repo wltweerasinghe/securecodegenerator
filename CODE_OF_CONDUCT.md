@@ -32,7 +32,7 @@ Behavior that degrades the community environment or violates professional standa
 
 ## 4. Enforcement & Moderation Protocol
 
-The repository maintainer ([W L T Weerasinghe](main.wltweerasinghe.workers.dev)) reserves the absolute right and authority to enforce this Code of Conduct to preserve repository integrity. Enforcement actions may include:
+The repository maintainer ([W L T Weerasinghe](wltweerasinghe.com)) reserves the absolute right and authority to enforce this Code of Conduct to preserve repository integrity. Enforcement actions may include:
 
 1. **Issue Closure & Cleanup:** Immediate closure and hidden moderation of issues or comments that violate these guidelines.
 2. **Interaction Restrictions:** Temporary or permanent restriction of user access to issue tracking and pull request submission features.
