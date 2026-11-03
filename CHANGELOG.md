@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Added case-study.html for portfolio website.
 - Added .ltw folder for internal reference.
 - Added Cover Photo.png
+- Added .gitattributes file
 
 ## [1.0.0] - 2026-10-08
 
